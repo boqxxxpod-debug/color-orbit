@@ -11,5 +11,13 @@
   ];
   const levels=raw.map((x,i)=>({id:i+1,slots:x[0],rings:x[1],initial:x[2],effects:x[3],hint:x[4]}));
   global.COLOR_ORBIT_LEVELS=levels;
-  if(typeof module!=='undefined')module.exports=levels;
+  const gateRaw=[
+    [['Y','B','R','B'],['R','G','Y','G'],['R','B','Y','G']],
+    [['Y','G','R','R'],['G','B','B','Y'],['R','B','Y','G']],
+    [['R','R','Y','R'],['G','B','B','Y'],['Y','G','G','B']],
+    [['G','B','B','G'],['B','R','Y','R'],['R','Y','Y','G']],
+    [['R','B','Y','Y'],['G','R','R','Y'],['G','G','B','B']]
+  ];
+  global.COLOR_ORBIT_GATE_LEVELS=gateRaw.map((rings,i)=>({id:i+1,mode:'gate',rings:rings.map(r=>r.slice()),slots:4,hint:i?'色を3時へ運んでからGATEで交換':'3時のGATEをタップすると、隣のリングの色を交換できます'}));
+  if(typeof module!=='undefined'){module.exports=levels;module.exports.gate=global.COLOR_ORBIT_GATE_LEVELS}
 })(typeof window!=='undefined'?window:globalThis);

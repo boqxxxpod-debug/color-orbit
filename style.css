@@ -3,3 +3,5 @@
 @media(max-width:370px){.app{padding-left:10px;padding-right:10px}.topbar{height:52px}.hint{font-size:11px}.controls button{padding:0 20px}.level-grid{gap:7px}}
 @media(min-height:780px){.board-wrap{margin-top:15px}.hint{margin-top:8px}}
 @media(prefers-reduced-motion:reduce){.ring-group{transition-duration:1ms}.clear-pulse.show{animation:none}}
+.mode-tabs{display:flex;gap:8px;margin:-8px 0 18px}.mode-tabs button{flex:1;min-height:42px;border:1px solid var(--line);border-radius:12px;background:#131d2d;color:var(--muted);font-weight:800;letter-spacing:.08em}.mode-tabs button.active{border-color:var(--accent);background:#1b3a3b;color:var(--accent)}
+.gate-button{cursor:pointer;outline:none}.gate-hit{fill:#142a35;stroke:#63e6be;stroke-width:2}.gate-label{fill:#fff;text-anchor:middle;font-size:20px;font-weight:900;pointer-events:none}.gate-button:focus .gate-hit{stroke:#fff;stroke-width:3}.gate-button.swapped{animation:gate-swap .24s ease}.gate-button.swapped .gate-hit{fill:#63e6be}.gate-button.swapped .gate-label{fill:#092019}@keyframes gate-swap{50%{transform:scale(1.18);transform-origin:center}}
