@@ -1,0 +1,7 @@
+'use strict';
+const assert=require('assert'),levels=require('./levels.js'),solver=require('./solver.js');
+assert.equal(levels.length,20);
+for(const level of levels){const result=solver.solve(level);assert(result,`Level ${level.id} is unsolvable`);let state=level.initial.slice();for(const move of result.path)state=solver.apply(state,level.effects,move.ring,move.direction,level.slots);assert(solver.solved(state));for(let r=0;r<level.rings;r++){const cw=solver.apply(level.initial,level.effects,r,1,level.slots),back=solver.apply(cw,level.effects,r,-1,level.slots);assert.deepEqual(back,level.initial,`Level ${level.id} direction inverse failed`)}}
+const sample=levels[16],after=solver.apply(sample.initial,sample.effects,1,1,sample.slots),undo=sample.initial.slice();assert.notDeepEqual(after,undo);assert.deepEqual(undo,sample.initial);assert(solver.solved([2,2,2]));assert(!solver.solved([2,2,1]));
+const memory={};global.localStorage={getItem:k=>memory[k]??null,setItem:(k,v)=>memory[k]=v};const storage=require('./storage.js'),progress=storage.load();progress.settings.colorHelp=true;storage.recordClear(progress,1,4,3);const restored=storage.load();assert.equal(restored.unlocked,2);assert.equal(restored.stars[1],3);assert.equal(restored.bestMoves[1],4);assert.equal(restored.settings.colorHelp,true);
+console.log(`Validated ${levels.length} solvable levels; max optimum ${Math.max(...levels.map(l=>solver.solve(l).moves))} moves.`);
