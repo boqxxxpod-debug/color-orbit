@@ -17,9 +17,13 @@
 
     <section id="gameScreen" class="screen">
       <div class="metrics"><span>MOVES <strong id="moveCount">0</strong></span><span>BEST <strong id="bestMoves">—</strong></span></div>
+      <div id="gateGuide" class="gate-guide hidden" aria-live="polite">
+        <strong id="guideText"></strong><span id="guideSub"></span>
+      </div>
       <div id="boardWrap" class="board-wrap">
         <svg id="board" class="board" viewBox="0 0 360 360" role="group" aria-label="同心円パズル盤面"></svg>
         <div id="clearPulse" class="clear-pulse">CLEAR!</div>
+        <button id="howToButton" class="how-to hidden" aria-label="GATE TEST 1の操作ガイドをもう一度見る">? HOW TO</button>
       </div>
       <p id="levelHint" class="hint"></p>
       <div class="controls"><button id="undoButton">↶ UNDO</button><button id="resetButton">↻ RESET</button></div>

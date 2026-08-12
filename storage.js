@@ -1,5 +1,5 @@
 (function(global){'use strict';
-  const KEY='color-orbit-progress-v1',defaults={unlocked:1,stars:{},bestMoves:{},gate:{unlocked:1,stars:{},bestMoves:{}},settings:{sound:true,colorHelp:false}};
+  const KEY='color-orbit-progress-v1',defaults={unlocked:1,stars:{},bestMoves:{},gate:{unlocked:1,stars:{},bestMoves:{},tutorialCompleted:false},settings:{sound:true,colorHelp:false}};
   const clone=o=>JSON.parse(JSON.stringify(o));
   function load(){try{const p=JSON.parse(global.localStorage.getItem(KEY));return p?{...clone(defaults),...p,gate:{...clone(defaults.gate),...p.gate},settings:{...defaults.settings,...p.settings}}:clone(defaults)}catch(_){return clone(defaults)}}
   function save(data){try{global.localStorage.setItem(KEY,JSON.stringify(data));return true}catch(_){return false}}
