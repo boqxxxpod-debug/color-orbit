@@ -19,5 +19,14 @@
     [['R','B','Y','Y'],['G','R','R','Y'],['G','G','B','B']]
   ];
   global.COLOR_ORBIT_GATE_LEVELS=gateRaw.map((rings,i)=>({id:i+1,mode:'gate',rings:rings.map(r=>r.slice()),slots:4,hint:i?'色を3時へ運んでからGATEで交換':'3時のGATEをタップすると、隣のリングの色を交換できます'}));
-  if(typeof module!=='undefined'){module.exports=levels;module.exports.gate=global.COLOR_ORBIT_GATE_LEVELS}
+  const lockRaw=[
+    [["R","B","Y"],["R","Y","B"],["R","Y","B"]],
+    [["B","R","Y"],["B","Y","R"],["Y","R","B"]],
+    [["G","B","R","Y"],["R","G","B","Y"],["B","R","G","Y"]],
+    [["G","Y","R","B"],["R","B","G","Y"],["G","R","B","Y"]],
+    [["B","P","G","Y","R"],["G","Y","P","B","R"],["R","G","B","Y","P"]]
+  ];
+  const lockHints=['揃った色は自動でLOCK！','まず1色を揃えよう','LOCK済みを飛ばして回転','LOCKする順番を考えよう','2〜3手先のLOCKを作ろう'];
+  global.COLOR_ORBIT_LOCK_LEVELS=lockRaw.map((rings,i)=>({id:i+1,mode:'lock',rings:rings.map(r=>r.slice()),slots:rings[0].length,hint:lockHints[i]}));
+  if(typeof module!=='undefined'){module.exports=levels;module.exports.gate=global.COLOR_ORBIT_GATE_LEVELS;module.exports.lock=global.COLOR_ORBIT_LOCK_LEVELS}
 })(typeof window!=='undefined'?window:globalThis);
